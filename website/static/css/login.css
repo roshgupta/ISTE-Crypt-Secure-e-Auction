@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Supermercado+One&display=swap");
+
+html {
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  overflow: hidden;
+  position: relative;
+}
+.sidebar-image-container {
+  background-image: url("/static/img/background-image.jpg");
+  background-size: cover;
+  background-position-x: 50%;
+  border-radius: 10% 10% 10% 10% / 0% 30% 29% 0%;
+  filter: blur(2px);
+}
+.side-image {
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  object-fit: cover;
+  z-index: 10;
+}
+.side-image.left {
+  bottom: -25%;
+  left: -10%;
+}
+.side-image.right {
+  top: -25%;
+  right: -10%;
+}
+.container-box {
+  width: 100%;
+  padding: 32px;
+}
+.container {
+  max-width: 400px;
+  width: 100%;
+  height: 100%;
+  padding: 12px 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.container h1 {
+  font-size: 36px;
+  font-family: "Supermercado One", cursive;
+  margin-bottom: 16px;
+  color: #8b73ff;
+}
+/* color: #e1a3ff; */
+.inputs {
+  width: 100%;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0px;
+}
+.input label {
+  font-weight: 500;
+  font-size: 20px;
+}
+.input input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  outline-color: #8b73ff;
+  background: linear-gradient(
+    90deg,
+    rgba(224, 163, 255, 0.801) 0%,
+    rgba(138, 115, 255, 0.753) 100%
+  );
+  color: white;
+}
+.input input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.input input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+}
+
+.input input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+}
+
+.controls {
+  width: 100%;
+}
+.controls span {
+  width: 100%;
+  text-align: right;
+  display: block;
+  text-decoration: none;
+  margin: 4px 0px;
+  color: #ec59ff;
+  font-size: 14px;
+}
+.controls .buttons {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  margin: 12px 0px;
+}
+.controls .buttons .button {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: #8b73ff;
+  cursor: pointer;
+}
+
+/* media query */
+@media screen and (max-width: 1200px) {
+  .side-image.left {
+    bottom: -30%;
+    left: -20%;
+  }
+  .side-image.right {
+    top: -30%;
+    right: -20%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .side-image.left {
+    bottom: -35%;
+    left: -25%;
+  }
+  .side-image.right {
+    top: -35%;
+    right: -25%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .sidebar-image-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0px;
+    z-index: -1;
+    filter: blur(6px) brightness(0.9) opacity(0.9);
+    /* opacity: 0.9; */
+  }
+  .container-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .side-image.left {
+    bottom: -40%;
+    left: -35%;
+  }
+  .side-image.right {
+    top: -40%;
+    right: -35%;
+  }
+}
