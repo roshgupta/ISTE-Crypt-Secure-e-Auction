@@ -2,9 +2,9 @@ package models
 
 type UserSeller struct {
 	modelImpl
-	FullName string
-	Email    string
-	Password string
+	FullName string `json:"full_name"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 func NewUserSeller(fullName, email, password string) *UserSeller {
