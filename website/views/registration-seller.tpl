@@ -20,15 +20,15 @@
         <div class="inputs">
           <div class="input">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name">
+            <input type="text" id="name" name="name" placeholder="Enter your name" class="">
           </div>
           <div class="input">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email id">
+            <input type="email" id="email" name="email" placeholder="Enter your email id" class="">
           </div>
           <div class="input">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Create a password">
+            <input type="password" id="password" name="password" placeholder="Create a password" class="">
           </div>
         </div>
         <div class="controls">
@@ -43,6 +43,7 @@
     </section>
     <img src="static/img/element.png" alt="" class="side-image right">
   </main>
+  <script src="static/js/registerSeller.js"></script>
 </body>
 
 </html>
