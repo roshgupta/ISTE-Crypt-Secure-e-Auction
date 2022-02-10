@@ -2,9 +2,9 @@ package models
 
 type UserBidder struct {
 	modelImpl
-	FullName string
-	Email    string
-	Password string
+	FullName string `json:"full_name"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 func NewUserBidder(fullName, email, password string) *UserBidder {
