@@ -2,7 +2,7 @@ package models
 
 type UserSeller struct {
 	modelImpl
-	FullName string `json:"full_name"`
+	FullName string `json:"fullName"`
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }

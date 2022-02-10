@@ -205,3 +205,16 @@ body {
     right: -35%;
   }
 }
+.error {
+  position: relative;
+  background-color: rgb(255, 170, 170);
+  border: 2px solid red;
+  color: red;
+}
+.error::after {
+  content: "Enter Valid Input";
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  font-size: 8px;
+}
