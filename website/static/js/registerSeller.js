@@ -2,7 +2,7 @@ const userName = document.getElementById("name");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const registerSellerButton = document.getElementById("register-seller");
-const nameRegex = /^([a-zA-Z]){3,30}$/;
+const nameRegex = /^([a-zA-Z0-9]){3,30}$/;
 const emailRegex = /^([a-zA-Z0-9_\.\-]+)@([a-zA-Z0-9_\.\-]+)\.([a-zA-Z]+){1,10}$/;
 
 const handleRegisterSeller = async () => {
@@ -15,7 +15,7 @@ const handleRegisterSeller = async () => {
       password: password.value,
       email: email.value
     }
-    let response = await fetch("/register-seller", {
+    let response = await fetch("/registration-seller", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

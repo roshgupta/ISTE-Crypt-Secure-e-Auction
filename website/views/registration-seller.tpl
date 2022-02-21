@@ -20,15 +20,15 @@
         <div class="inputs">
           <div class="input">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" class="">
+            <input type="text" id="name" name="name" placeholder="Enter your name">
           </div>
           <div class="input">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email id" class="">
+            <input type="email" id="email" name="email" placeholder="Enter your email id">
           </div>
           <div class="input">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Create a password" class="">
+            <input type="password" id="password" name="password" placeholder="Create a password">
           </div>
         </div>
         <div class="controls">
