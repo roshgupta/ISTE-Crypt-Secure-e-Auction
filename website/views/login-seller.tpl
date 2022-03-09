@@ -29,7 +29,6 @@
             </div>
           </div>
           <div class="controls">
-            <input type="submit" value="Submit">
             <span>Don't have an account?</span>
             <div class="buttons">
               <input type="submit" value="Login" class="button">

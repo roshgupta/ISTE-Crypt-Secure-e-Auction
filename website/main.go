@@ -10,10 +10,12 @@ import (
 
 func init() {
 	orm.RegisterDriver("mysql", orm.DRMySQL)
-	mysqlReg := beego.AppConfig.String("mysqluser") + ":" +
-		beego.AppConfig.String("mysqlpass") + "@tcp(127.0.0.1:3306)/" +
-		beego.AppConfig.String("mysqldb")
-	orm.RegisterDataBase("default", "mysql", mysqlReg)
+	orm.RegisterDataBase("default", "mysql", "root:@tcp(localhost)/mysql")
+	// 	force := true // Drop old table and create new
+	// 	err := orm.RunSyncdb("default", force, beego.BConfig.RunMode == "dev")
+	// 	if err != nil {
+	// 		fmt.Printf("An Error Occurred: %v", err)
+	// 	}
 }
 
 func main() {

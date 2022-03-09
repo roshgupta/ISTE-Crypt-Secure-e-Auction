@@ -31,25 +31,25 @@
             <div class="sections">
                 <section class="org">
                     <img src="static/assets/seller.svg" class="orgImg"></img>
-                    <a href="/">
+                    <a href="/login-seller">
                         <button class="create-btn">Login as Seller</button>
                     </a>
                     <p>
                         Are you a seller? Login here <br /> and sell your items for the <br /> highest bid
                     </p>
-                    <!-- <a href="/">
+                    <!-- <a href="/login-seller">
                         <button class="login-btn">Admin Login</button>
                     </a> -->
                 </section>
                 <section class="user">
                     <img src="static/assets/bid.svg" class="userImg"></img>
 
-                    <a href="/">
+                    <a href="/login-bidder">
                         <button class="create-btn2"> Login as Bidder </button>
                     </a>
                     <p>
                         Are you a bidder? Login here, <br /> and bid your price and buy<br /> various items</p>
-                    <!-- <a href="/">
+                    <!-- <a href="/login-bidder">
                         <button class="login-btn">User Login</button>
                     </a> -->
                 </section>

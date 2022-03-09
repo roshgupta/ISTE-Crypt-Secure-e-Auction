@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="static/css/login.css">
-  <title>Login for Bidder</title>
+  <title>Registration for Seller</title>
 </head>
 
 <body>
@@ -16,8 +16,8 @@
     </aside>
     <section class="container-box">
       <div class="container">
-        <h1>Login for Bidder</h1>
-        <form  action="" id="bidder-login" method="POST">
+        <h1>Registration for Seller</h1>
+        <form action="" id="seller-registration" method="POST">
           <div class="inputs">
             <div class="input">
               <label for="email">Email</label>
@@ -25,20 +25,17 @@
             </div>
             <div class="input">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" placeholder="Enter password">
+              <input type="password" id="password" name="password" placeholder="Create a password">
             </div>
           </div>
           <div class="controls">
-            <input type="submit" value="Submit">
-            <span>Don't have an account?</span>
+            <span>Already have an account?</span>
             <div class="buttons">
-              <input type="submit" value="Login" class="button">
-              <a href="/registration-bidder" class="button">Register</a>
+              <input type="submit" value="Register" class="button">
+              <a href="/login-seller" class="button">Login</a>
             </div>
+          </div>
         </form>
-      </div>
-      
-
       </div>
     </section>
     <img src="static/img/element.png" alt="" class="side-image right">
