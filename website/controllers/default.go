@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	_ "Secure-e-Auc/models"
+
 	"github.com/astaxie/beego"
 )
 
@@ -21,11 +23,11 @@ type Bidder struct {
 
 func (c *MainController) Get() {
 	c.TplName = "home.tpl"
-	
+
 }
 func (c *Landing) Get() {
 	c.TplName = "landing.tpl"
-	
+
 }
 func (c *Seller) Get() {
 	c.TplName = "seller.tpl"

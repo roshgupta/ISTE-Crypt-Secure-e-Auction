@@ -30,7 +30,7 @@
         <div class="controls">
           <span>Don't have an account?</span>
           <div class="buttons">
-            <button class="button">Login</button>
+            <input type="submit" value="Login" class="button">
             <a href="/registration-seller" class="button">Register</a>
           </div>
         </div>
