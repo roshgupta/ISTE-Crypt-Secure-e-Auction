@@ -32,8 +32,9 @@
     <br>
     <h1 class="head">Seller's Dashboard</h1>
     <div class="addBtn">
-        <button class="addItem"><i class="fas fa-chevron-circle-up"></i> Add item</button>
-    </div>
+        <div class="buttons">
+            <a href="/new-auction" class="addItem">Add New Product</a>
+          </div>  
     <h2 class="bidHead"><i class="fas fa-hand-holding-usd"></i> Your items </h2>
     <div class="Product1">
         <span class="productTitle">Product 1</span>

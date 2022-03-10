@@ -7,6 +7,8 @@ import (
 	"github.com/astaxie/beego"
 )
 
+var user_id int = -1
+
 type LoginBidderController struct {
 	beego.Controller
 }
@@ -23,6 +25,7 @@ func (c *LoginBidderController) Post() {
 	user, err := models.LoginBidder(user_email, user_password)
 	fmt.Print(err != nil)
 	if user.Email == user_email {
+		user_id = int(user.Id)
 		c.Redirect("/bidder", 302)
 	}
 	c.Redirect("/login-bidder", 302)

@@ -18,15 +18,34 @@ type Seller struct {
 	Password string `json:"-"`
 }
 
-// func (m *Bidder) Read(fields ...string) error {
-// 	if err := orm.NewOrm().Read(m, fields...); err != nil {
-// 		return err
-// 	}
-// 	return nil
-// }
+type Auction struct {
+	Id          int64 `json:"id"`
+	Seller_id   int64
+	Bidder_id   int64
+	Completed   bool
+	Name        string
+	Description string
+}
 
 func init() {
-	orm.RegisterModel(new(Bidder), new(Seller))
+	orm.RegisterModel(new(Bidder), new(Seller), new(Auction))
+}
+
+func NewAuction(name, description string, bidder_id, seller_id int64, completed bool) (id int64, err error) {
+	o := orm.NewOrm()
+	auction := Auction{}
+	auction.Name = name
+	auction.Description = description
+	auction.Bidder_id = bidder_id
+	auction.Seller_id = -1
+	auction.Completed = false
+
+	aId, insertErr := o.Insert(&auction)
+	if insertErr != nil {
+		return -1, errors.New("failed to insert user to database")
+	}
+
+	return aId, nil
 }
 
 func NewBidder(email, password string) (id int64, err error) {
