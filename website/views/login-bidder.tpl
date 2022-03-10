@@ -30,7 +30,7 @@
         <div class="controls">
           <span>Don't have an account?</span>
           <div class="buttons">
-            <button class="button">Login</button>
+            <button id="login-bidder" class="button">Login</button>
             <a href="/registration-bidder" class="button">Register</a>
           </div>
         </div>
@@ -39,6 +39,7 @@
     </section>
     <img src="static/img/element.png" alt="" class="side-image right">
   </main>
+  <script src="static/js/loginBidder.js"></script>
 
 </body>
 
