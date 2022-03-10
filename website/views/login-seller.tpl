@@ -17,16 +17,18 @@
     <section class="container-box">
       <div class="container">
         <h1>Login for Seller</h1>
-        <div class="inputs">
-          <div class="input">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email id">
+        <form action="" id="bidder-login" method="POST">
+          <div class="inputs">
+            <div class="input">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email id">
+            </div>
+            <div class="input">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter password">
+            </div>
           </div>
-          <div class="input">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter password">
-          </div>
-        </div>
+
         <div class="controls">
           <span>Don't have an account?</span>
           <div class="buttons">
@@ -34,6 +36,8 @@
             <a href="/registration-seller" class="button">Register</a>
           </div>
         </div>
+        </form>
+
 
       </div>
     </section>

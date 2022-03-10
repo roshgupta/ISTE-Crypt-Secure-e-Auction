@@ -20,10 +20,7 @@
             <img src="../static/assets/block.png" alt="" class="bugimg">
             <h1 class="navBrand">Secure e-Auction</h1>
         </div>
-        <!-- <div class="profile">
-            <img src="./assets/user.svg" alt="" class="userimg">
-            <h3>User</h3>
-        </div> -->
+       
         <div class="userProfile">
             <i class="fas fa-user-circle user-pro"></i>
             <i class="fas fa-power-off power"></i>
@@ -31,69 +28,15 @@
     </div>
     <br>
     <h1 class="head">Bidder's Dashboard</h1>
-    <h2 class="bidHead"><i class="fas fa-gavel"></i> Active bids </h2>
+    <h2 class="bidHead"><i class="fas fa-gavel"></i>Bids</h2>
+    {{range .auctions}}
     <div class="Product1">
-        <span class="productTitle">Product 1</span>
-        <span class="productDesc"> There are many variations of passages of Lorem Ipsum available, but the majority have
-            suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-            believable. If you are going to use a passage of Lorem Ipsum </span>
+        <span class="productTitle">{{.Name}}</span>
+        <span class="productDesc">{{.Description}}</span>
         <div class="buttonDiv"> <button type="button" class="bidbtn"> Bid here </button>
         </div>
     </div>
-    <div class="Product1">
-        <span class="productTitle">Product 1</span>
-        <span class="productDesc"> There are many variations of passages of Lorem Ipsum available, but the majority have
-            suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-            believable. If you are going to use a passage of Lorem Ipsum </span>
-        <div class="buttonDiv"> <button type="button" class="bidbtn"> Bid here </button>
-        </div>
-    </div>
-    <div class="Product1">
-        <span class="productTitle">Product 1</span>
-        <span class="productDesc"> There are many variations of passages of Lorem Ipsum available, but the majority have
-            suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-            believable. If you are going to use a passage of Lorem Ipsum </span>
-        <div class="buttonDiv"> <button type="button" class="bidbtn"> Bid here </button>
-        </div>
-    </div>
-    <div class="Product1">
-        <span class="productTitle">Product 1</span>
-        <span class="productDesc"> There are many variations of passages of Lorem Ipsum available, but the majority have
-            suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-            believable. If you are going to use a passage of Lorem Ipsum </span>
-        <div class="buttonDiv"> <button type="button" class="bidbtn"> Bid here </button>
-        </div>
-    </div>
-    <div class="previousBids">
-        <h2 class="bidHead"><i class="fas fa-gavel"></i> Previous bids </h2>
-        <div class="Product1">
-            <span class="productTitle">Product 1</span>
-            <span class="productDesc"> There are many variations of passages of Lorem Ipsum available, but the majority
-                have
-                suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-                believable. If you are going to use a passage of Lorem Ipsum </span>
-            <div class="buttonDiv"> <button type="button" class="bidbtn1"> Out of stock </button>
-            </div>
-        </div>
-        <div class="Product1">
-            <span class="productTitle">Product 1</span>
-            <span class="productDesc"> There are many variations of passages of Lorem Ipsum available, but the majority
-                have
-                suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-                believable. If you are going to use a passage of Lorem Ipsum </span>
-            <div class="buttonDiv"> <button type="button" class="bidbtn1"> Out of stock </button>
-            </div>
-        </div>
-        <div class="Product1">
-            <span class="productTitle">Product 1</span>
-            <span class="productDesc"> There are many variations of passages of Lorem Ipsum available, but the majority
-                have
-                suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-                believable. If you are going to use a passage of Lorem Ipsum </span>
-            <div class="buttonDiv"> <button type="button" class="bidbtn1"> Out of stock </button>
-            </div>
-        </div>
-    </div>
+    {{end}}
 
 </body>
 

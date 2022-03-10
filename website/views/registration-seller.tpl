@@ -17,27 +17,26 @@
     <section class="container-box">
       <div class="container">
         <h1>Registration for Seller</h1>
-        <div class="inputs">
-          <div class="input">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name">
+        <form action="" id="seller-registration" method="POST">
+          <div class="inputs">
+            <div class="input">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email id">
+            </div>
+            <div class="input">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Create a password">
+            </div>
           </div>
-          <div class="input">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email id">
+          <div class="controls">
+            <span>Already have an account?</span>
+            <div class="buttons">
+              <button class="button" id="register-seller">Register</button>
+              <a href="/login-seller" class="button">Login</a>
+            </div>
           </div>
-          <div class="input">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Create a password">
-          </div>
-        </div>
-        <div class="controls">
-          <span>Already have an account?</span>
-          <div class="buttons">
-            <button class="button" id="register-seller">Register</button>
-            <a href="/login-seller" class="button">Login</a>
-          </div>
-        </div>
+
+        </form>
 
       </div>
     </section>
