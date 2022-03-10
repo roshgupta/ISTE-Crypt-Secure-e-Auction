@@ -7,16 +7,6 @@ A user that wants to sell one item can use our smart contract to create an aucti
 
 Before endorsing the transaction that ends the auction, each organization queries the implicit private data collection on their peers to check if any organization member has a winning bid that has not yet been revealed. If a winning bid is found, the organization will withhold their endorsement and prevent the auction from being closed. This prevents the seller from ending the auction prematurely, or colluding with buyers to end the auction at an artificially low price.
 
-The sample uses several Fabric features to make the auction private and secure. Bids are stored in private data collections to prevent bids from being distributed to other peers in the channel. When bidding is closed, the auction smart contract uses the `GetPrivateDataHash()` API to verify that the bid stored in private data is the same bid that is being revealed. State based endorsement is used to add the organization of each bidder to the auction endorsement policy. The smart contract uses the `GetClientIdentity.GetID()` API to ensure that only the potential buyer can read their bid from private state and only the seller can close or end the auction.
-
-This tutorial uses the auction smart contract in a scenario where one seller wants to auction a painting. Four potential buyers from two different organizations will submit bids to the auction and try to win the auction.
-
-
-
-
-
-
-
 ## Register and enroll the application identities
 
 To interact with the network, you will need to enroll the Certificate Authority administrators of Org1 and Org2. You can use the `enrollAdmin.js` program for this task. Run the following command to enroll the Org1 admin:
@@ -66,7 +56,7 @@ After the transaction is complete, the `createAuction.js` application will query
   "status": "open"
 }
 ```
-The smart contract uses the `GetClientIdentity().GetID()` API to read the identity that creates the auction and defines that identity as the auction `"seller"`. The seller is identified by the name and issuer of the seller's certificate.
+The smart contract for Secure-Auction project uses the `GetClientIdentity().GetID()` API to read the identity that creates the auction and defines that identity as the auction `"seller"`. The seller is identified by the name and issuer of the seller's certificate.
 
 ## Bid on the auction
 
@@ -371,6 +361,7 @@ The transaction was successfully endorsed by both Org1 and Org2, who both calcul
 
 ## Clean up
 
+Messed it up somewhere? Time to clean it up.. 
 When your are done using the auction smart contract, you can bring down the network and clean up the environment. In the `auction-simple/application-javascript` directory, run the following command to remove the wallets used to run the applications:
 ```
 rm -rf wallet
