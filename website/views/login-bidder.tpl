@@ -28,20 +28,23 @@
               <input type="password" id="password" name="password" placeholder="Enter password">
             </div>
           </div>
+
           <div class="controls">
             <span>Don't have an account?</span>
             <div class="buttons">
-              <input type="submit" value="Login" class="button">
+              <button id="login-bidder" class="button">Login</button>
               <a href="/registration-bidder" class="button">Register</a>
             </div>
         </form>
       </div>
       
 
+
       </div>
     </section>
     <img src="static/img/element.png" alt="" class="side-image right">
   </main>
+  <script src="static/js/loginBidder.js"></script>
 
 </body>
 

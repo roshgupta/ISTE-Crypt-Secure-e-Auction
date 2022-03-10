@@ -31,16 +31,18 @@
           <div class="controls">
             <span>Already have an account?</span>
             <div class="buttons">
-              <input type="submit" value="Register" class="button">
+              <button class="button" id="register-seller">Register</button>
               <a href="/login-seller" class="button">Login</a>
             </div>
           </div>
+
         </form>
+
       </div>
     </section>
     <img src="static/img/element.png" alt="" class="side-image right">
   </main>
-
+  <script src="static/js/registerSeller.js"></script>
 </body>
 
 </html>
