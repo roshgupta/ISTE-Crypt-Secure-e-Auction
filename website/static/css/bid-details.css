@@ -67,8 +67,17 @@ body {
 }
 .bid-description {
   font-size: 20px;
+  text-align: justify;
 }
 .bidder-name {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+/* .bidder-name p:nth-child(2),
+.bidder-name h2:nth-child(2) {
+  margin-right: 32px;
+} */
+.bidder-name p {
   font-size: 24px;
 }
 .bidder-names {

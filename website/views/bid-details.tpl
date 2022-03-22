@@ -25,9 +25,22 @@
           totam!.</p>
       </div>
       <div class="bidder-names">
-        <h2 class="bidder-names-heading">Bidder Names</h2>
-        <p class="bidder-name">Abhishek Chavan</p>
-        <p class="bidder-name">Ayush Mangukia</p>
+        <div class="bidder-name">
+          <h2 class="bidder-names-heading">Bidder Names</h2>
+          <h2 class="bidder-names-heading">Bidding amount</h2>
+        </div>
+
+        <div class="bidder-name">
+          <p>Abhishek Chavan</p>
+          <p>456 <span> &#8377; </span></p>
+        </div>
+        <div class="bidder-name">
+          <p>Ayush Mangukia</p>
+          <p>456 <span> &#8377; </span></p>
+        </div>
+
+
+
 
       </div>
 
