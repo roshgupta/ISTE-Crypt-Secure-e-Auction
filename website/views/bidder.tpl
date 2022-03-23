@@ -23,7 +23,11 @@
 
         <div class="userProfile">
             <i class="fas fa-user-circle user-pro"></i>
-            <i class="fas fa-power-off power"></i>
+            <a href="/">
+
+                <i class="fas fa-power-off power"></i>
+            </a>
+
         </div>
     </div>
     <br>
@@ -33,11 +37,12 @@
     <div class="Product1">
         <span class="productTitle">{{.Name}}</span>
         <span class="productDesc">{{.Description}}</span>
-        <form action="" method="POST"> 
-        <input name = "bidAmount" id="bidAmount" class = "amount-container" type="number" placeholder="Enter a value"></input>
-        <div class="buttonDiv"> <input type="submit" value="Bid" class="bidbtn">
+        <form action="" method="POST">
+            <input name="bidAmount" id="bidAmount" class="amount-container" type="number"
+                placeholder="Enter a value"></input>
+            <div class="buttonDiv"> <input type="submit" value="Bid" class="bidbtn">
         </form>
-        </div>
+    </div>
     </div>
     {{end}}
 

@@ -41,7 +41,9 @@ type Bidder struct {
 type BidDetailsController struct {
 	beego.Controller
 }
-
+type BidController struct {
+	beego.Controller
+}
 type MainController struct {
 	beego.Controller
 }
@@ -171,4 +173,7 @@ func (c *Seller) Get() {
 
 func (c *MainController) Get() {
 	c.TplName = "landing.tpl"
+}
+func (c *BidController) Get() {
+	c.TplName = "bid.tpl"
 }

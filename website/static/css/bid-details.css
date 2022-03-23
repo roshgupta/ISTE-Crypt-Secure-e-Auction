@@ -140,3 +140,33 @@ body {
     right: -35%;
   }
 }
+
+.bid-form {
+  padding: 64px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bid-form input {
+  padding: 12px 20px;
+  font-size: 24px;
+  margin: 0px 16px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  outline: #8b73ff;
+}
+.bid-form input[type="submit"] {
+  padding: 12px 48px;
+  font-weight: 700;
+  background-color: #8b73ff;
+  cursor: pointer;
+}
+.bid-form input[type="number"] {
+  background: linear-gradient(
+    90deg,
+    rgba(224, 163, 255, 0.801) 0%,
+    rgba(138, 115, 255, 0.753) 100%
+  );
+}

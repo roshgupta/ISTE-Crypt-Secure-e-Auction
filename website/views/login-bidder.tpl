@@ -12,11 +12,12 @@
 <body>
   <main class="main-container">
     <img src="static/img/element.png" alt="" class="side-image left">
+
     <aside class="sidebar-image-container-login">
-      <a href="/">
-        <img class="back-button" src="static/img/back.png" alt="back">
-      </a>
     </aside>
+    <a href="/" class="back-button-a">
+      <img class="back-button" src="static/img/back.png" alt="back">
+    </a>
     <section class="container-box">
       <div class="container">
         <h1>Login for Bidder</h1>
