@@ -17,5 +17,4 @@ func init() {
 	beego.Router("/new-auction", &controllers.NewAuctionController{})
 	beego.Router("/bid-details", &controllers.BidDetailsController{})
 	beego.Router("/bid", &controllers.BidController{})
-	beego.Router("/seller/:id", &controllers.SellerAuctionController{})
 }

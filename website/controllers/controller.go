@@ -159,6 +159,8 @@ func (c *Bidder) Get() {
 
 func (c *BidDetailsController) Get() {
 	c.TplName = "bid-details.tpl"
+	id, err := c.GetInt("id")
+	fmt.Println(id, err)
 }
 
 func (c *Seller) Get() {
@@ -174,9 +176,3 @@ func (c *MainController) Get() {
 func (c *BidController) Get() {
 	c.TplName = "bid.tpl"
 }
-
-// func (c *SellerAuctionController) Get() {
-// 	c.TplName = "bid-details.tpl"
-// 	id := c(":id")
-// 	fmt.Println(id)
-// }
