@@ -46,6 +46,8 @@ type MainController struct {
 	beego.Controller
 }
 
+//Bidder Login
+
 func (c *LoginBidderController) Get() {
 	c.TplName = "login-bidder.tpl"
 }
@@ -69,6 +71,8 @@ func (c *LoginSellerController) Get() {
 
 }
 
+// Seller Login
+
 func (c *LoginSellerController) Post() {
 	// c.ServeJSON()
 	var user_email = c.GetString("email")
@@ -83,6 +87,8 @@ func (c *LoginSellerController) Post() {
 	c.Redirect("/login-seller", 302)
 }
 
+
+//Bidder Registration
 func (c *RegistrationBidderController) Get() {
 	c.TplName = "registration-bidder.tpl"
 }
@@ -95,6 +101,9 @@ func (c *RegistrationBidderController) Post() {
 	c.Redirect("/login-bidder", 302)
 }
 
+
+//Seller Registrations
+
 func (c *RegistrationSellerController) Get() {
 	c.TplName = "registration-seller.tpl"
 }
@@ -106,6 +115,8 @@ func (c *RegistrationSellerController) Post() {
 	models.NewSeller(user_email, user_password)
 	c.Redirect("/login-seller", 302)
 }
+
+// Add a product to the auction
 
 func (c *NewAuctionController) Get() {
 	c.TplName = "new-auction.tpl"
