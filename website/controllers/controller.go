@@ -108,6 +108,7 @@ func (c *RegistrationSellerController) Get() {
 	c.TplName = "registration-seller.tpl"
 }
 
+
 func (c *RegistrationSellerController) Post() {
 	var user_email = c.GetString("email")
 	var user_password = c.GetString("password")
@@ -128,7 +129,7 @@ func (c *NewAuctionController) Post() {
 	var user_desc = c.GetString("productDesc")
 	var seller_id = seller_user_id
 
-	models.NewAuction(user_product, user_desc, bidder_user_id, seller_user_id, false)
+	models.NewAuction(user_product, user_desc, int64(seller_id), false)
 	c.Redirect("/seller", 302)
 }
 
@@ -152,13 +153,13 @@ func (c *Bidder) Get() {
 	c.Data["auctions"] = auctions
 }
 
-func (c *Bidder) Post() {
-	var bid_amount = c.GetInt("bidAmount")
-	var bidder_id = bidder_user_id
+// func (c *Bidder) Post() {
+// 	var bid_amount = c.GetInt("bidAmount")
+// 	var bidder_id = bidder_user_id
 
-	models.Bidder_List(bid_amount, int64(bidder_id))
-	c.Redirect("/bidder", 302)
-}
+// 	models.Bidder_List(bid_amount, int64(bidder_id))
+// 	c.Redirect("/bidder", 302)
+// }
 
 func (c *BidDetailsController) Get() {
 	c.TplName = "bid-details.tpl"
