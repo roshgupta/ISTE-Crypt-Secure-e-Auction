@@ -48,6 +48,10 @@ type MainController struct {
 	beego.Controller
 }
 
+type SellerAuctionController struct {
+	beego.Controller
+}
+
 func (c *LoginBidderController) Get() {
 	c.TplName = "login-bidder.tpl"
 }
@@ -123,23 +127,25 @@ func (c *NewAuctionController) Post() {
 	c.Redirect("/seller", 302)
 }
 
-type Auction struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
-}
+// type Auction struct {
+// 	Name        string `json:"name"`
+// 	Description string `json:"description"`
+// }
 
-type Auctions []Auction
+// type Auctions []Auction
 
-var auctions []Auction
+// var auctions []Auction
 
-func init() {
-	auctions = Auctions{
-		Auction{Name: "name", Description: "You can suck it or sit on it"},
-	}
-}
+// func init() {
+// 	auctions = Auctions{
+// 		Auction{Name: "name", Description: "You can suck it or sit on it"},
+// 	}
+// }
 
 func (c *Bidder) Get() {
 	c.TplName = "bidder.tpl"
+	auctions, err := models.AuctionListBidder()
+	fmt.Print(err != nil)
 	c.Data["auctions"] = auctions
 }
 
@@ -157,6 +163,9 @@ func (c *BidDetailsController) Get() {
 
 func (c *Seller) Get() {
 	c.TplName = "seller.tpl"
+	auctions, err := models.AuctionListSeller(int64(seller_user_id))
+	fmt.Print(err != nil)
+	c.Data["auctions"] = auctions
 }
 
 func (c *MainController) Get() {
@@ -165,3 +174,9 @@ func (c *MainController) Get() {
 func (c *BidController) Get() {
 	c.TplName = "bid.tpl"
 }
+
+// func (c *SellerAuctionController) Get() {
+// 	c.TplName = "bid-details.tpl"
+// 	id := c(":id")
+// 	fmt.Println(id)
+// }

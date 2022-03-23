@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -66,27 +67,31 @@ func NewAuction(name, description string, seller_id int64, completed bool) (id i
 	return aId, nil
 }
 
-func AuctionListSeller(seller_id int64) (auction *Auction, err error) {
+func AuctionListSeller(seller_id int64) (auction []*Auction, err error) {
 	o := orm.NewOrm()
-	u := Auction{Seller_id: seller_id}
-	e := o.Read(&u, "Seller_id")
+	var auctions []*Auction
+	u := o.QueryTable("auction")
+	num, e := u.Filter("Seller_id", seller_id).All(&auctions)
+	fmt.Println(num)
 	if e == orm.ErrNoRows {
 		return nil, errors.New("user not found")
 	} else if e == nil {
-		return &u, nil
+		return auctions, nil
 	} else {
 		return nil, errors.New("unknown error occurred")
 	}
 }
 
-func AuctionListBidder() (auction *Auction, err error) {
+func AuctionListBidder() (auction []*Auction, err error) {
 	o := orm.NewOrm()
-	u := Auction{}
-	e := o.Read(&u, "Seller_id")
+	var auctions []*Auction
+	u := o.QueryTable("auction")
+	num, e := u.Filter("Completed", false).All(&auctions)
+	fmt.Println(num)
 	if e == orm.ErrNoRows {
 		return nil, errors.New("user not found")
 	} else if e == nil {
-		return &u, nil
+		return auctions, nil
 	} else {
 		return nil, errors.New("unknown error occurred")
 	}
