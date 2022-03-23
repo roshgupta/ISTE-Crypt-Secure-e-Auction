@@ -8,13 +8,11 @@ const handleCompleteAuction = async () => {
     let response = await fetch("/seller", {
         method: "PUT",
         headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(data);
+        body: JSON.stringify(data)
     })
     console.log(response);
 
-} else {
-    console.log("Error");
-}
+} 
 
 
 completedButton.addEventListener("click", handleCompleteAuction);

@@ -29,6 +29,14 @@ body {
   overflow: hidden;
   position: relative;
 }
+.main-container-auction {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .sidebar-image-container-login,
 .sidebar-image-container-register {
   background-size: cover;
@@ -61,6 +69,13 @@ body {
 .container-box {
   width: 100%;
   padding: 32px;
+}
+.container-box-auction {
+  width: 100%;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container {
   max-width: 400px;
@@ -216,15 +231,26 @@ body {
   }
 }
 
-.third {
-  background: #2c3e50;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  border-color: blue;
+.add-button {
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  background-color: #8a73ff;
   color: #fff;
-  box-shadow: 0 0 40px 40px blue inset, 0 0 0 0 blue;
-  transition: all 150ms ease-in-out;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.3s;
 }
-.third:hover {
-  box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
+
+.add-button:hover {
+  background-color: #e1a3ff;
+}
+
+.back-button {
+  height: 24px;
+  width: 24px;
+  object-fit: cover;
 }
