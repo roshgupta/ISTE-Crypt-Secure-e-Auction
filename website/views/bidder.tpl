@@ -16,11 +16,11 @@
 
 <body>
     <div class="nav">
-        <div class="brand">
+        <a href="/" class="brand">
             <img src="../static/assets/block.png" alt="" class="bugimg">
             <h1 class="navBrand">Secure e-Auction</h1>
-        </div>
-       
+        </a>
+
         <div class="userProfile">
             <i class="fas fa-user-circle user-pro"></i>
             <i class="fas fa-power-off power"></i>

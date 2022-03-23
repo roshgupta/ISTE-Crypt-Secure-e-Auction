@@ -1,9 +1,8 @@
-
 package auction
 
 import (
-	"fmt"
 	"encoding/base64"
+	"fmt"
 
 	"github.com/hyperledger/fabric-chaincode-go/pkg/statebased"
 	"github.com/hyperledger/fabric-chaincode-go/shim"

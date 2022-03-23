@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Supermercado+One&display=swap");
+
+html {
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding: 64px;
+}
+.side-image {
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  object-fit: cover;
+  z-index: 10;
+}
+.side-image.left {
+  bottom: -25%;
+  left: -10%;
+}
+.side-image.right {
+  top: -25%;
+  right: -10%;
+}
+.container-box {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  height: 90%;
+  width: 90%;
+  padding: 32px;
+  overflow-y: scroll;
+  z-index: 1000;
+}
+.bid-details-heading {
+  text-align: center;
+  font-size: 40px;
+  font-family: "Supermercado One", cursive;
+  margin-bottom: 16px;
+  color: #8b73ff;
+}
+.bidder-names-heading {
+  font-size: 32px;
+  /* margin-bottom: 8px; */
+  color: #8b73ff;
+  font-family: "Supermercado One", cursive;
+}
+.bid-description {
+  font-size: 20px;
+  text-align: justify;
+}
+.bidder-name {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+/* .bidder-name p:nth-child(2),
+.bidder-name h2:nth-child(2) {
+  margin-right: 32px;
+} */
+.bidder-name p {
+  font-size: 24px;
+}
+.bidder-names {
+  padding: 32px 0px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+/* Media Query */
+@media screen and (max-width: 1200px) {
+  .side-image.left {
+    bottom: -30%;
+    left: -20%;
+  }
+  .side-image.right {
+    top: -30%;
+    right: -20%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .side-image.left {
+    bottom: -35%;
+    left: -30%;
+  }
+  .side-image.right {
+    top: -35%;
+    right: -30%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .side-image.left {
+    bottom: -30%;
+    left: -35%;
+  }
+  .side-image.right {
+    top: -30%;
+    right: -35%;
+  }
+}

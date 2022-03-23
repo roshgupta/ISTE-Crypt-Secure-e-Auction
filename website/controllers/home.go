@@ -1,15 +1,15 @@
 package controllers
 
-import (
-	_ "Secure-e-Auc/models"
+// import (
+// 	_ "Secure-e-Auc/models"
 
-	"github.com/astaxie/beego"
-)
+// 	"github.com/astaxie/beego"
+// )
 
-type MainController struct {
-	beego.Controller
-}
+// type MainController struct {
+// 	beego.Controller
+// }
 
-func (c *MainController) Get() {
-	c.TplName = "landing.tpl"
-}
+// func (c *MainController) Get() {
+// 	c.TplName = "landing.tpl"
+// }
