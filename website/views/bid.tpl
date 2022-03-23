@@ -25,7 +25,7 @@
           totam!.</p>
       </div>
       <form class="bid-form">
-        <input type="number" name="amount" id="bid-amount">
+        <input type="number" name="bidAmount" id="bidAmount">
         <input type="submit" value="Bid">
       </form>
 
