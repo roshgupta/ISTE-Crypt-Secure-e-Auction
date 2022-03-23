@@ -55,7 +55,7 @@ body {
 .bid-details-heading {
   text-align: center;
   font-size: 40px;
-  font-family: "Supermercado One", cursive;
+  font-family: "poppins";
   margin-bottom: 16px;
   color: #8b73ff;
 }
@@ -63,7 +63,7 @@ body {
   font-size: 32px;
   /* margin-bottom: 8px; */
   color: #8b73ff;
-  font-family: "Supermercado One", cursive;
+  font-family: "poppins";
 }
 .bid-description {
   font-size: 20px;

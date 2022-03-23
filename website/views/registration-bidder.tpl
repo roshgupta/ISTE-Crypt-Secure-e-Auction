@@ -12,7 +12,7 @@
 <body>
   <main class="main-container">
     <img src="static/img/element.png" alt="" class="side-image left">
-    <aside class="sidebar-image-container">
+    <aside class="sidebar-image-container-register">
     </aside>
     <section class="container-box">
       <div class="container">

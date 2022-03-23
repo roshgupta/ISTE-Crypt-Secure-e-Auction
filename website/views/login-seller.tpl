@@ -12,7 +12,7 @@
 <body>
   <main class="main-container">
     <img src="static/img/element.png" alt="" class="side-image left">
-    <aside class="sidebar-image-container">
+    <aside class="sidebar-image-container-login">
     </aside>
     <section class="container-box">
       <div class="container">
@@ -29,13 +29,13 @@
             </div>
           </div>
 
-        <div class="controls">
-          <span>Don't have an account?</span>
-          <div class="buttons">
-            <button id="login-seller" class="button">Login</button>
-            <a href="/registration-seller" class="button">Register</a>
+          <div class="controls">
+            <span>Don't have an account?</span>
+            <div class="buttons">
+              <button id="login-seller" class="button">Login</button>
+              <a href="/registration-seller" class="button">Register</a>
+            </div>
           </div>
-        </div>
         </form>
 
 

@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Supermercado+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 html {
   font-size: 100%;
@@ -27,12 +29,19 @@ body {
   overflow: hidden;
   position: relative;
 }
-.sidebar-image-container {
-  background-image: url("/static/img/background-image.jpg");
+.sidebar-image-container-login,
+.sidebar-image-container-register {
   background-size: cover;
   background-position-x: 50%;
   border-radius: 10% 10% 10% 10% / 0% 30% 29% 0%;
   filter: blur(2px);
+}
+.sidebar-image-container-login {
+  background-image: url("/static/img/background-image.jpg");
+}
+
+.sidebar-image-container-register {
+  background-image: url("/static/img/bg-register.jpg");
 }
 .side-image {
   position: absolute;
@@ -64,7 +73,7 @@ body {
 }
 .container h1 {
   font-size: 36px;
-  font-family: "Supermercado One", cursive;
+  font-family: "Poppins";
   margin-bottom: 16px;
   color: #8b73ff;
 }
@@ -170,7 +179,8 @@ body {
   }
 }
 @media screen and (max-width: 900px) {
-  .sidebar-image-container {
+  .sidebar-image-container-login,
+  .sidebar-image-container-register {
     position: absolute;
     top: 0;
     right: 0;
