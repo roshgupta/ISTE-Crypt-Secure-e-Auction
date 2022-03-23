@@ -115,7 +115,7 @@ func (c *NewAuctionController) Post() {
 	// c.ServeJSON()
 	var user_product = c.GetString("productTitle")
 	var user_desc = c.GetString("productDesc")
-	var seller_id = user_id
+	var seller_id = seller_user_id
 
 	models.NewAuction(user_product, user_desc, -1, int64(seller_id), false)
 	c.Redirect("/seller", 302)
