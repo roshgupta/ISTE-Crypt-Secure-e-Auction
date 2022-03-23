@@ -21,30 +21,27 @@ type Seller struct {
 type Auction struct {
 	Id          int64 `json:"id"`
 	Seller_id   int64
-	Bidder_id   int64
 	Completed   bool
 	Name        string
 	Description string
 }
 
 type BidderList struct {
-	Id          int64 `json:"id"`
-	Bidder_id	int64
-	Amount		int64
-	
-	
+	Id        int64 `json:"id"`
+	Bidder_id int64
+	Amount    int64
 }
 
 func init() {
 	orm.RegisterModel(new(Bidder), new(Seller), new(Auction), new(BidderList))
 }
 
-func Bidder_List(bid_amount, bidder_id int64)(id int64, err error) {
+func Bidder_List(bid_amount, bidder_id int64) (id int64, err error) {
 	o := orm.NewOrm()
 	bidderlist := BidderList{}
 	bidderlist.Amount = bid_amount
 	bidderlist.Bidder_id = bidder_id
-	
+
 	bId, insertErr := o.Insert(&bidderlist)
 	if insertErr != nil {
 		return -1, errors.New("failed to insert user to database")
@@ -52,12 +49,12 @@ func Bidder_List(bid_amount, bidder_id int64)(id int64, err error) {
 
 	return bId, nil
 }
-func NewAuction(name, description string, bidder_id, seller_id int64, completed bool) (id int64, err error) {
+
+func NewAuction(name, description string, seller_id int64, completed bool) (id int64, err error) {
 	o := orm.NewOrm()
 	auction := Auction{}
 	auction.Name = name
 	auction.Description = description
-	auction.Bidder_id = bidder_id
 	auction.Seller_id = seller_id
 	auction.Completed = false
 
@@ -67,6 +64,32 @@ func NewAuction(name, description string, bidder_id, seller_id int64, completed 
 	}
 
 	return aId, nil
+}
+
+func AuctionListSeller(seller_id int64) (auction *Auction, err error) {
+	o := orm.NewOrm()
+	u := Auction{Seller_id: seller_id}
+	e := o.Read(&u, "Seller_id")
+	if e == orm.ErrNoRows {
+		return nil, errors.New("user not found")
+	} else if e == nil {
+		return &u, nil
+	} else {
+		return nil, errors.New("unknown error occurred")
+	}
+}
+
+func AuctionListBidder() (auction *Auction, err error) {
+	o := orm.NewOrm()
+	u := Auction{}
+	e := o.Read(&u, "Seller_id")
+	if e == orm.ErrNoRows {
+		return nil, errors.New("user not found")
+	} else if e == nil {
+		return &u, nil
+	} else {
+		return nil, errors.New("unknown error occurred")
+	}
 }
 
 func NewBidder(email, password string) (id int64, err error) {
@@ -79,7 +102,7 @@ func NewBidder(email, password string) (id int64, err error) {
 	if insertErr != nil {
 		return -1, errors.New("failed to insert user to database")
 	}
-			
+
 	return uId, nil
 }
 
