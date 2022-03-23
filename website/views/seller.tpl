@@ -36,13 +36,14 @@
             <a href="/new-auction" class="addItem">Add New Product</a>
           </div>  
     <h2 class="bidHead"><i class="fas fa-hand-holding-usd"></i> Your items </h2>
+    {{range .auctions}}
     <div class="Product1">
-        <span class="productTitle">Product 1</span>
-        <span class="productDesc">  </span>
+        <span class="productTitle">{{.Name}}</span>
+        <span class="productDesc">  {{.Description}}</span>
         <div class="buttonDiv"> <button type="button" class="bidbtn3"><i class="far fa-trash-alt"></i> Remove</button>
         </div>
     </div>
-
+{{end}}
 
 </body>
 

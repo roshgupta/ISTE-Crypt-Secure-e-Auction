@@ -21,7 +21,7 @@
           <div class="inputs">
             <div class="input">
               <label for="productTitle">Product Name</label>
-              <input type="text" id="productTitle" name="ProductTitle" placeholder="Provide Name of the product">
+              <input type="text" id="productTitle" name="productTitle" placeholder="Provide Name of the product">
             </div>
             <div class="input">
               <label for="ProductDesc">Product Description</label>
