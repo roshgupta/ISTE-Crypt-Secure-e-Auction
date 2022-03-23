@@ -2,7 +2,6 @@ package main
 
 import (
 	_ "Secure-e-Auc/routers"
-	"fmt"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"

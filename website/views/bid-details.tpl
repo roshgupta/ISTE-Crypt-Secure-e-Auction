@@ -14,7 +14,7 @@
     <img src="static/img/element.png" alt="" class="side-image left">
     <section class="container-box">
       <div>
-        <h1 class="bid-details-heading">Bid Name</h1>
+        <h1 class="bid-details-heading">Bid name</h1>
         <p class="bid-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, labore beatae! Autem
           quia
           natus facere asperiores tempora quaerat corporis magni distinctio delectus vel quam tenetur, non laudantium
@@ -26,7 +26,7 @@
       </div>
       <div class="bidder-names">
         <div class="bidder-name">
-          <h2 class="bidder-names-heading">Bidder Names</h2>
+          <h2 class="bidder-names-heading">Bidder names</h2>
           <h2 class="bidder-names-heading">Bidding amount</h2>
         </div>
 
@@ -38,10 +38,9 @@
           <p>Ayush Mangukia</p>
           <p>456 <span> &#8377; </span></p>
         </div>
-
-
-
-
+      </div>
+      <div class="end-auction">
+        <button>End auction</button>
       </div>
 
 

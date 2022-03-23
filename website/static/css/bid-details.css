@@ -73,6 +73,28 @@ body {
   display: grid;
   grid-template-columns: 1fr auto;
 }
+.end-auction {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.end-auction button {
+  border: none;
+  outline: none;
+  padding: 1.2rem;
+  background-color: #8a73ff;
+  color: #fff;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+.end-auction button:hover {
+  background-color: #e1a3ff;
+}
 /* .bidder-name p:nth-child(2),
 .bidder-name h2:nth-child(2) {
   margin-right: 32px;
