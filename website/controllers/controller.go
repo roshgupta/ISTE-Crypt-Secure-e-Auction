@@ -41,7 +41,9 @@ type Bidder struct {
 type BidDetailsController struct {
 	beego.Controller
 }
-
+type BidController struct {
+	beego.Controller
+}
 type MainController struct {
 	beego.Controller
 }
@@ -149,9 +151,9 @@ func (c *Bidder) Get() {
 // 	c.Redirect("/bidder", 302)
 // }
 
-// func (c *BidDetailsController) Get() {
-// 	c.TplName = "bid-details.tpl"
-// }
+func (c *BidDetailsController) Get() {
+	c.TplName = "bid-details.tpl"
+}
 
 func (c *Seller) Get() {
 	c.TplName = "seller.tpl"
@@ -159,4 +161,7 @@ func (c *Seller) Get() {
 
 func (c *MainController) Get() {
 	c.TplName = "landing.tpl"
+}
+func (c *BidController) Get() {
+	c.TplName = "bid.tpl"
 }
