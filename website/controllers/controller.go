@@ -7,9 +7,42 @@ import (
 	"github.com/astaxie/beego"
 )
 
-var user_id int = -1
+var bidder_user_id int = -1
+var seller_user_id int = -1
+
+type Seller struct {
+	beego.Controller
+}
 
 type LoginBidderController struct {
+	beego.Controller
+}
+
+type LoginSellerController struct {
+	beego.Controller
+}
+
+type RegistrationBidderController struct {
+	beego.Controller
+}
+
+type RegistrationSellerController struct {
+	beego.Controller
+}
+
+type NewAuctionController struct {
+	beego.Controller
+}
+
+type Bidder struct {
+	beego.Controller
+}
+
+type BidDetailsController struct {
+	beego.Controller
+}
+
+type MainController struct {
 	beego.Controller
 }
 
@@ -25,20 +58,15 @@ func (c *LoginBidderController) Post() {
 	user, err := models.LoginBidder(user_email, user_password)
 	fmt.Print(err != nil)
 	if user.Password == user_password {
-		user_id = int(user.Id)
+		bidder_user_id = int(user.Id)
 		c.Redirect("/bidder", 302)
 	}
 	c.Redirect("/login-bidder", 302)
 }
 
-
-
-type LoginSellerController struct {
-	beego.Controller
-}
-
 func (c *LoginSellerController) Get() {
 	c.TplName = "login-seller.tpl"
+
 }
 
 func (c *LoginSellerController) Post() {
@@ -49,13 +77,10 @@ func (c *LoginSellerController) Post() {
 	user, err := models.LoginSeller(user_email, user_password)
 	fmt.Print(err != nil)
 	if user.Password == user_password {
+		seller_user_id = int(user.Id)
 		c.Redirect("/seller", 302)
 	}
 	c.Redirect("/login-seller", 302)
-}
-
-type RegistrationBidderController struct {
-	beego.Controller
 }
 
 func (c *RegistrationBidderController) Get() {
@@ -70,10 +95,6 @@ func (c *RegistrationBidderController) Post() {
 	c.Redirect("/login-bidder", 302)
 }
 
-type RegistrationSellerController struct {
-	beego.Controller
-}
-
 func (c *RegistrationSellerController) Get() {
 	c.TplName = "registration-seller.tpl"
 }
@@ -84,11 +105,6 @@ func (c *RegistrationSellerController) Post() {
 	fmt.Print(user_email)
 	models.NewSeller(user_email, user_password)
 	c.Redirect("/login-seller", 302)
-}
-
-
-type NewAuctionController struct {
-	beego.Controller
 }
 
 func (c *NewAuctionController) Get() {
@@ -103,11 +119,6 @@ func (c *NewAuctionController) Post() {
 
 	models.NewAuction(user_product, user_desc, -1, int64(seller_id), false)
 	c.Redirect("/seller", 302)
-}
-
-
-type Bidder struct {
-	beego.Controller
 }
 
 type Auction struct {
@@ -138,24 +149,12 @@ func (c *Bidder) Get() {
 // 	c.Redirect("/bidder", 302)
 // }
 
-type BidDetailsController struct {
-	beego.Controller
-}
-
-func (c *BidDetailsController) Get() {
-	c.TplName = "bid-details.tpl"
-}
-
-type Seller struct {
-	beego.Controller
-}
+// func (c *BidDetailsController) Get() {
+// 	c.TplName = "bid-details.tpl"
+// }
 
 func (c *Seller) Get() {
 	c.TplName = "seller.tpl"
-}
-
-type MainController struct {
-	beego.Controller
 }
 
 func (c *MainController) Get() {
