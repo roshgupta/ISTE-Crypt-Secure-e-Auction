@@ -24,7 +24,7 @@ func (c *LoginBidderController) Post() {
 
 	user, err := models.LoginBidder(user_email, user_password)
 	fmt.Print(err != nil)
-	if user.Email == user_email {
+	if user.Password == user_password {
 		user_id = int(user.Id)
 		c.Redirect("/bidder", 302)
 	}

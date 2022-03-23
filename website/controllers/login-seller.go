@@ -22,7 +22,7 @@ func (c *LoginSellerController) Post() {
 
 	user, err := models.LoginSeller(user_email, user_password)
 	fmt.Print(err != nil)
-	if user.Email == user_email {
+	if user.Password == user_password {
 		c.Redirect("/seller", 302)
 	}
 	c.Redirect("/login-seller", 302)

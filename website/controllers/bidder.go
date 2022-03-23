@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	_ "Secure-e-Auc/models"
+	// "Secure-e-Auc/models"
 
 	"github.com/astaxie/beego"
 )
@@ -21,8 +21,7 @@ var auctions []Auction
 
 func init() {
 	auctions = Auctions{
-		Auction{Name: "Dildo", Description: "You can suck it or sit on it"},
-		Auction{Name: "Viagra", Description: "If your PP can't handle sex"},
+		Auction{Name: "name", Description: "You can suck it or sit on it"},
 	}
 }
 
@@ -30,3 +29,11 @@ func (c *Bidder) Get() {
 	c.TplName = "bidder.tpl"
 	c.Data["auctions"] = auctions
 }
+
+// func (c *Bidder) Post() {
+// 	var bid_amount = c.GetInt("bidAmount")
+// 	var bidder_id = user_id
+
+// 	models.Bidder_List(bid_amount, int64(bidder_id))
+// 	c.Redirect("/bidder", 302)
+// }

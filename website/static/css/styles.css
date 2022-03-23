@@ -44,6 +44,10 @@ body{
         font-weight: 900;
         color: #8B73FF;
     }
+.amount-container{
+    position: relative;
+    
+}
 .headerSmol{
         color: #8B73FF;
         font-family: 'Poppins';
