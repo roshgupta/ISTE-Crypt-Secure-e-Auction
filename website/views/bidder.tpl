@@ -23,8 +23,8 @@
 
         <div class="userProfile">
             <i class="fas fa-user-circle user-pro"></i>
-            <a href="/">
-
+            <a href="/" id="logout">
+                
                 <i class="fas fa-power-off power"></i>
             </a>
 

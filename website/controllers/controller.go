@@ -48,7 +48,9 @@ type MainController struct {
 	beego.Controller
 }
 
-//Bidder Login
+type SellerAuctionController struct {
+	beego.Controller
+}
 
 func (c *LoginBidderController) Get() {
 	c.TplName = "login-bidder.tpl"
@@ -126,6 +128,12 @@ func (c *NewAuctionController) Get() {
 }
 
 func (c *NewAuctionController) Post() {
+	if seller_user_id == -1 {
+		c.Redirect("/seller", 302)
+		}
+		// c.Redirect("/", 404)
+
+	// }
 	// c.ServeJSON()
 	var user_product = c.GetString("productTitle")
 	var user_desc = c.GetString("productDesc")
@@ -133,30 +141,39 @@ func (c *NewAuctionController) Post() {
 
 	models.NewAuction(user_product, user_desc, int64(seller_id), false)
 	c.Redirect("/seller", 302)
+		
 }
 
-type Auction struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
-}
+// type Auction struct {
+// 	Name        string `json:"name"`
+// 	Description string `json:"description"`
+// }
 
-type Auctions []Auction
+// type Auctions []Auction
 
-var auctions []Auction
+// var auctions []Auction
 
-func init() {
-	auctions = Auctions{
-		Auction{Name: "name", Description: "You can suck it or sit on it"},
-	}
-}
+// func init() {
+// 	auctions = Auctions{
+// 		Auction{Name: "name", Description: "You can suck it or sit on it"},
+// 	}
+// }
 
 func (c *Bidder) Get() {
+	if bidder_user_id == -1 {
+		c.Redirect("/seller", 302)
+		}
 	c.TplName = "bidder.tpl"
+	auctions, err := models.AuctionListBidder()
+	fmt.Print(err != nil)
 	c.Data["auctions"] = auctions
 }
 
 // func (c *Bidder) Post() {
-// 	var bid_amount = c.GetInt("bidAmount")
+// 	if bidder_user_id == -1 {
+// 		c.Redirect("/", 302)
+// 	}
+// 	var bid_amount, err = c.GetInt("bidAmount")
 // 	var bidder_id = bidder_user_id
 
 // 	models.Bidder_List(bid_amount, int64(bidder_id))
@@ -168,7 +185,15 @@ func (c *BidDetailsController) Get() {
 }
 
 func (c *Seller) Get() {
+	if seller_user_id == -1 {
+	c.Redirect("/", 302)
+	}
+
+
 	c.TplName = "seller.tpl"
+	auctions, err := models.AuctionListSeller(int64(seller_user_id))
+	fmt.Print(err != nil)
+	c.Data["auctions"] = auctions
 }
 
 func (c *MainController) Get() {
@@ -177,3 +202,9 @@ func (c *MainController) Get() {
 func (c *BidController) Get() {
 	c.TplName = "bid.tpl"
 }
+
+// func (c *SellerAuctionController) Get() {
+// 	c.TplName = "bid-details.tpl"
+// 	id := c(":id")
+// 	fmt.Println(id)
+// }
