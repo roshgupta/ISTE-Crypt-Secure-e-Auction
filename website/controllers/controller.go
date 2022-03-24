@@ -178,7 +178,7 @@ func (c *Bidder) Get() {
 
 // 	models.Bidder_List(bid_amount, int64(bidder_id))
 // 	c.Redirect("/bidder", 302)
-// }
+// }that
 
 func (c *BidDetailsController) Get() {
 	c.TplName = "bid-details.tpl"
