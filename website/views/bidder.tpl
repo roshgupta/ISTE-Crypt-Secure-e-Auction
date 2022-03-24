@@ -37,14 +37,11 @@
     <div class="Product1">
         <span class="productTitle">{{.Name}}</span>
         <span class="productDesc">{{.Description}}</span>
-        <form action="" method="POST">
-            <input name="bidAmount" id="bidAmount" class="amount-container" type="number"
-                placeholder="Enter a value"></input>
-            <div class="buttonDiv"> <input type="submit" value="Bid" class="bidbtn">
-        </form>
+        <input type="submit" value="Bid" class="bidbtn" onclick="window.location.href='/bid?id={{.Id}}'">
     </div>
     </div>
     {{end}}
+
 
 </body>
 
