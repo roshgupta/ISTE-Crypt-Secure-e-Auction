@@ -14,13 +14,14 @@
     <img src="static/img/element.png" alt="" class="side-image left">
     <section class="container-box">
       <div>
-        <h1 class="bid-details-heading">{{.Name}}</h1>
-        <p class="bid-description">{{.Description}}</p>
+        <h1 class="bid-details-heading">{{.auctions.Name}}</h1>
+        <p class="bid-description">{{.auctions.Description}}</p>
       </div>
       <form class="bid-form">
         <input type="number" name="amount" id="bid-amount">
         <input type="submit" value="Bid">
       </form>
+    
 
 
 
