@@ -97,6 +97,19 @@ func AuctionListBidder() (auction []*Auction, err error) {
 	}
 }
 
+func AuctionDetails(id int) (auction *Auction, err error) {
+	o := orm.NewOrm()
+	u := Auction{Id: int64(id)}
+	e := o.Read(&u, "Id")
+	if e == orm.ErrNoRows {
+		return nil, errors.New("user not found")
+	} else if e == nil {
+		return &u, nil
+	} else {
+		return nil, errors.New("unknown error occurred")
+	}
+}
+
 func NewBidder(email, password string) (id int64, err error) {
 	o := orm.NewOrm()
 	user := Bidder{}
