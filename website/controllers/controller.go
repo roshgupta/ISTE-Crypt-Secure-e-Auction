@@ -9,6 +9,7 @@ import (
 
 var bidder_user_id int = -1
 var seller_user_id int = -1
+var auctions_id = -1
 
 type Seller struct {
 	beego.Controller
@@ -91,7 +92,6 @@ func (c *LoginSellerController) Post() {
 	c.Redirect("/login-seller", 302)
 }
 
-
 //Bidder Registration
 func (c *RegistrationBidderController) Get() {
 	c.TplName = "registration-bidder.tpl"
@@ -105,13 +105,11 @@ func (c *RegistrationBidderController) Post() {
 	c.Redirect("/login-bidder", 302)
 }
 
-
 //Seller Registrations
 
 func (c *RegistrationSellerController) Get() {
 	c.TplName = "registration-seller.tpl"
 }
-
 
 func (c *RegistrationSellerController) Post() {
 	var user_email = c.GetString("email")
@@ -130,8 +128,8 @@ func (c *NewAuctionController) Get() {
 func (c *NewAuctionController) Post() {
 	if seller_user_id == -1 {
 		c.Redirect("/seller", 302)
-		}
-		// c.Redirect("/", 404)
+	}
+	// c.Redirect("/", 404)
 
 	// }
 	// c.ServeJSON()
@@ -141,7 +139,7 @@ func (c *NewAuctionController) Post() {
 
 	models.NewAuction(user_product, user_desc, int64(seller_id), false)
 	c.Redirect("/seller", 302)
-		
+
 }
 
 // type Auction struct {
@@ -162,7 +160,7 @@ func (c *NewAuctionController) Post() {
 func (c *Bidder) Get() {
 	if bidder_user_id == -1 {
 		c.Redirect("/seller", 302)
-		}
+	}
 	c.TplName = "bidder.tpl"
 	auctions, err := models.AuctionListBidder()
 	fmt.Print(err != nil)
@@ -181,14 +179,19 @@ func (c *Bidder) Get() {
 // }that
 
 func (c *BidDetailsController) Get() {
+	id, err := c.GetInt("id")
+	if err != nil {
+		fmt.Print(err)
+	}
+	auctions, err := models.AuctionDetails(id)
+	c.Data["auctions"] = auctions
 	c.TplName = "bid-details.tpl"
 }
 
 func (c *Seller) Get() {
 	if seller_user_id == -1 {
-	c.Redirect("/", 302)
+		c.Redirect("/", 302)
 	}
-
 
 	c.TplName = "seller.tpl"
 	auctions, err := models.AuctionListSeller(int64(seller_user_id))
@@ -199,8 +202,27 @@ func (c *Seller) Get() {
 func (c *MainController) Get() {
 	c.TplName = "landing.tpl"
 }
+
 func (c *BidController) Get() {
+	id, err := c.GetInt("id")
+	if err != nil {
+		fmt.Print(err)
+	}
+	auctions_id = id
+	auctions, err := models.AuctionDetails(auctions_id)
+	c.Data["auctions"] = auctions
 	c.TplName = "bid.tpl"
+}
+
+func (c *BidController) Post() {
+	auctions, err := models.AuctionDetails(auctions_id)
+	c.Data["auctions"] = auctions
+	c.TplName = "bid.tpl"
+	amount, err := c.GetInt("bidAmount")
+	fmt.Print(amount, err)
+	id, err := models.AddBid(int64(auctions_id), int64(bidder_user_id), int64(amount))
+	print(id)
+	c.Redirect("/bidder", 302)
 }
 
 // func (c *SellerAuctionController) Get() {

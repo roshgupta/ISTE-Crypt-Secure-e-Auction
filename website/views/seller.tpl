@@ -43,8 +43,7 @@
         <div class="Product1">
             <span class="productTitle">{{.Name}}</span>
             <span class="productDesc"> {{.Description}}</span>
-            <div class="buttonDiv"> <button type="button" class="bidbtn3"><i class="far fa-trash-alt"></i>
-                    Remove</button>
+            <input type="submit" value="Details" class="bidbtn" onclick="window.location.href='/bid-details?id={{.Id}}'">
             </div>
         </div>
         {{end}}

@@ -28,27 +28,14 @@ type Auction struct {
 }
 
 type BidderList struct {
-	Id        int64 `json:"id"`
-	Bidder_id int64
-	Amount    int64
+	Id         int64 `json:"id"`
+	Auction_id int64
+	Bidder_id  int64
+	Amount     int64
 }
 
 func init() {
 	orm.RegisterModel(new(Bidder), new(Seller), new(Auction), new(BidderList))
-}
-
-func Bidder_List(bid_amount, bidder_id int64) (id int64, err error) {
-	o := orm.NewOrm()
-	bidderlist := BidderList{}
-	bidderlist.Amount = bid_amount
-	bidderlist.Bidder_id = bidder_id
-
-	bId, insertErr := o.Insert(&bidderlist)
-	if insertErr != nil {
-		return -1, errors.New("failed to insert user to database")
-	}
-
-	return bId, nil
 }
 
 func NewAuction(name, description string, seller_id int64, completed bool) (id int64, err error) {
@@ -65,6 +52,21 @@ func NewAuction(name, description string, seller_id int64, completed bool) (id i
 	}
 
 	return aId, nil
+}
+
+func AddBid(auction_id, bidder_id, amount int64) (id int64, err error) {
+	o := orm.NewOrm()
+	bid := BidderList{}
+	bid.Auction_id = auction_id
+	bid.Bidder_id = bidder_id
+	bid.Amount = amount
+
+	uId, insertErr := o.Insert(&bid)
+	if insertErr != nil {
+		return -1, errors.New("failed to insert bid to database")
+	}
+
+	return uId, nil
 }
 
 func AuctionListSeller(seller_id int64) (auction []*Auction, err error) {
@@ -92,6 +94,19 @@ func AuctionListBidder() (auction []*Auction, err error) {
 		return nil, errors.New("user not found")
 	} else if e == nil {
 		return auctions, nil
+	} else {
+		return nil, errors.New("unknown error occurred")
+	}
+}
+
+func AuctionDetails(id int) (auction *Auction, err error) {
+	o := orm.NewOrm()
+	u := Auction{Id: int64(id)}
+	e := o.Read(&u, "Id")
+	if e == orm.ErrNoRows {
+		return nil, errors.New("user not found")
+	} else if e == nil {
+		return &u, nil
 	} else {
 		return nil, errors.New("unknown error occurred")
 	}

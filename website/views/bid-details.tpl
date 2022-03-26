@@ -14,15 +14,8 @@
     <img src="static/img/element.png" alt="" class="side-image left">
     <section class="container-box">
       <div>
-        <h1 class="bid-details-heading">Bid name</h1>
-        <p class="bid-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, labore beatae! Autem
-          quia
-          natus facere asperiores tempora quaerat corporis magni distinctio delectus vel quam tenetur, non laudantium
-          eius
-          quisquam explicabo maiores dolorem sapiente molestiae amet. Aspernatur repellendus accusamus quaerat officia
-          ipsam blanditiis deleniti debitis labore incidunt reprehenderit ad quae quibusdam deserunt illum dicta enim
-          facere perferendis, sequi odio laborum? Odit, sapiente? Id doloribus numquam laudantium sunt distinctio
-          totam!.</p>
+        <h1 class="bid-details-heading">{{.auctions.Name}}</h1>
+        <p class="bid-description">{{.auctions.Description}}</p>
       </div>
       <div class="bidder-names">
         <div class="bidder-name">
