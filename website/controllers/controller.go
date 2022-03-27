@@ -215,13 +215,11 @@ func (c *BidController) Get() {
 }
 
 func (c *BidController) Post() {
-	auctions, err := models.AuctionDetails(auctions_id)
-	c.Data["auctions"] = auctions
-	c.TplName = "bid.tpl"
 	amount, err := c.GetInt("bidAmount")
-	fmt.Print(amount, err)
-	id, err := models.AddBid(int64(auctions_id), int64(bidder_user_id), int64(amount))
-	print(id)
+	fmt.Print(err)
+	fmt.Print(amount)
+	bidId, err := models.AddBid(int64(auctions_id), int64(bidder_user_id), int64(amount))
+	fmt.Println(bidId)
 	c.Redirect("/bidder", 302)
 }
 
