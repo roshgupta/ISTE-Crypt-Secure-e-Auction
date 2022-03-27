@@ -191,11 +191,10 @@ func (c *BidDetailsController) Get() {
 	c.TplName = "bid-details.tpl"
 }
 
-// func (c *SellerAuctionController) Get() {
-// 	c.TplName = "bid-details.tpl"
-// 	id := c(":id")
-// 	fmt.Println(id)
-// }
+func (c *BidDetailsController) Post() {
+	models.EndBid(int64(auctions_id))
+	c.Redirect("/seller", 302)
+}
 
 func (c *Seller) Get() {
 	if seller_user_id == -1 {

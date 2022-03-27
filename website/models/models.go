@@ -69,6 +69,17 @@ func AddBid(auction_id, bidder_id, amount int64) (id int64, err error) {
 	return uId, nil
 }
 
+func EndBid(auction_id int64) {
+	o := orm.NewOrm()
+	bid := Auction{Id: auction_id}
+	if o.Read(&bid) == nil {
+		bid.Completed = true
+		if num, err := o.Update(&bid); err == nil {
+			fmt.Println(num)
+		}
+	}
+}
+
 func AuctionBidList(auction_id int64) (bidderlist []*BidderList, err error) {
 	o := orm.NewOrm()
 	var bidders []*BidderList

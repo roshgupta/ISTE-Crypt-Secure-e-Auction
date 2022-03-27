@@ -28,9 +28,9 @@
           <p>{{.Amount}}<span> &#8377; </span></p>
         </div>
       {{end}}
-      <div class="end-auction">
-        <button name="completed" value = "1">End auction</button>
-      </div>
+      <form class="end-auction" action="" method="POST">
+        <button name="completed" value="1">End auction</button>
+      </form>
 
 
 
