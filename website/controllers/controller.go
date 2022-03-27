@@ -183,10 +183,19 @@ func (c *BidDetailsController) Get() {
 	if err != nil {
 		fmt.Print(err)
 	}
+	auctions_id = id
 	auctions, err := models.AuctionDetails(id)
+	bidderlist, err := models.AuctionBidList(int64(id))
 	c.Data["auctions"] = auctions
+	c.Data["bidders"] = bidderlist
 	c.TplName = "bid-details.tpl"
 }
+
+// func (c *SellerAuctionController) Get() {
+// 	c.TplName = "bid-details.tpl"
+// 	id := c(":id")
+// 	fmt.Println(id)
+// }
 
 func (c *Seller) Get() {
 	if seller_user_id == -1 {
@@ -222,9 +231,3 @@ func (c *BidController) Post() {
 	fmt.Println(bidId)
 	c.Redirect("/bidder", 302)
 }
-
-// func (c *SellerAuctionController) Get() {
-// 	c.TplName = "bid-details.tpl"
-// 	id := c(":id")
-// 	fmt.Println(id)
-// }

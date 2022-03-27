@@ -69,6 +69,21 @@ func AddBid(auction_id, bidder_id, amount int64) (id int64, err error) {
 	return uId, nil
 }
 
+func AuctionBidList(auction_id int64) (bidderlist []*BidderList, err error) {
+	o := orm.NewOrm()
+	var bidders []*BidderList
+	u := o.QueryTable("bidder_list")
+	num, e := u.Filter("Auction_id", auction_id).All(&bidders)
+	fmt.Println(num)
+	if e == orm.ErrNoRows {
+		return nil, errors.New("user not found")
+	} else if e == nil {
+		return bidders, nil
+	} else {
+		return nil, errors.New("unknown error occurred")
+	}
+}
+
 func AuctionListSeller(seller_id int64) (auction []*Auction, err error) {
 	o := orm.NewOrm()
 	var auctions []*Auction

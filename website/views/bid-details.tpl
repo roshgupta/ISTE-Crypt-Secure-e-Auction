@@ -22,19 +22,15 @@
           <h2 class="bidder-names-heading">Bidder names</h2>
           <h2 class="bidder-names-heading">Bidding amount</h2>
         </div>
-
+      {{range .bidders}}
         <div class="bidder-name">
-          <p>Abhishek Chavan</p>
-          <p>456 <span> &#8377; </span></p>
+          <p>{{.Bidder_id}}</p>
+          <p>{{.Amount}}<span> &#8377; </span></p>
         </div>
-        <div class="bidder-name">
-          <p>Ayush Mangukia</p>
-          <p>456 <span> &#8377; </span></p>
-        </div>
+      {{end}}
+      <div class="end-auction">
+        <button name="completed" value = "1">End auction</button>
       </div>
-      <form class="end-auction" action="" method="POST">
-        <button name="completed" value="1">End auction</button>
-      </form>
 
 
 
