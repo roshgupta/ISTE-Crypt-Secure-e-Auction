@@ -17,7 +17,7 @@
         <h1 class="bid-details-heading">{{.auctions.Name}}</h1>
         <p class="bid-description">{{.auctions.Description}}</p>
       </div>
-      <form action="" method="POST">
+      <form action="" method="POST" class="bid-form">
         <input type="number" name="bidAmount" id="bidAmount">
         <input type="submit" value="Bid">
       </form>
