@@ -3,8 +3,9 @@ package controllers
 import (
 	"Secure-e-Auc/models"
 	"fmt"
-
+    "os/exec"
 	"github.com/astaxie/beego"
+	"strconv"
 )
 
 var bidder_user_id int = -1
@@ -102,6 +103,18 @@ func (c *RegistrationBidderController) Post() {
 	var user_password = c.GetString("password")
 	fmt.Print(user_email)
 	models.NewBidder(user_email, user_password)
+	user, err := models.LoginBidder(user_email, user_password)
+	if err == nil{
+		print(err)
+	}
+	app := "node"
+	arg0 := "auction/auction-simple/application-javascript/registerEnrollUser.js"
+	arg1 := "org2"
+	s := strconv.FormatInt(user.Id, 10)
+	arg2 := s
+	cmd := exec.Command(app, arg0, arg1, arg2)
+    stdout, err := cmd.Output()
+	fmt.Println(string(stdout),err)
 	c.Redirect("/login-bidder", 302)
 }
 
@@ -116,6 +129,19 @@ func (c *RegistrationSellerController) Post() {
 	var user_password = c.GetString("password")
 	fmt.Print(user_email)
 	models.NewSeller(user_email, user_password)
+	user, err := models.LoginSeller(user_email, user_password)
+	if err == nil{
+		print(err)
+	}
+	app := "node"
+	arg0 := "auction/auction-simple/application-javascript/registerEnrollUser.js"
+	arg1 := "org1"
+	s := strconv.FormatInt(user.Id, 10)
+	arg2 := s
+	cmd := exec.Command(app, arg0, arg1, arg2)
+    stdout, err := cmd.Output()
+	fmt.Println(string(stdout),err)
+
 	c.Redirect("/login-seller", 302)
 }
 
@@ -137,7 +163,25 @@ func (c *NewAuctionController) Post() {
 	var user_desc = c.GetString("productDesc")
 	var seller_id = seller_user_id
 
-	models.NewAuction(user_product, user_desc, int64(seller_id), false)
+	id, err := models.NewAuction(user_product, user_desc, int64(seller_id), false)
+	if err == nil{
+		print(err)
+	}
+	auctions, err := models.AuctionDetails(int(id))
+	if err == nil{
+		print(err)
+	}
+	app := "node"
+	arg0 := "auction/auction-simple/application-javascript/createAuction.js"
+	arg1 := "org1"
+	s := strconv.Itoa(seller_user_id)
+	arg2 := s
+	s = strconv.FormatInt(auctions.Id, 10)
+	arg3 := s
+	arg4 := string(user_product)
+	cmd := exec.Command(app, arg0, arg1, arg2, arg3, arg4)
+	stdout, err := cmd.Output()
+	fmt.Println(string(stdout),err)
 	c.Redirect("/seller", 302)
 
 }
