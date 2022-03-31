@@ -48,8 +48,10 @@ async function submitBid(ccp,wallet,user,auctionID,bidID) {
 		}
 
 		console.log('\n--> Submit Transaction: add bid to the auction');
-		await statefulTxn.submit(auctionID,bidID);
+		console.log(bidID)
 
+		await statefulTxn.submit(auctionID,bidID);
+		console.log('still safe idk how')
 		console.log('\n--> Evaluate Transaction: query the auction to see that our bid was added');
 		let result = await contract.evaluateTransaction('QueryAuction',auctionID);
 		console.log('*** Result: Auction: ' + prettyJSONString(result.toString()));
@@ -57,7 +59,7 @@ async function submitBid(ccp,wallet,user,auctionID,bidID) {
 		gateway.disconnect();
 	} catch (error) {
 		console.error(`******** FAILED to submit bid: ${error}`);
-		process.exit(1);
+		// process.exit(3);
 	}
 }
 
@@ -96,7 +98,7 @@ async function main() {
 		if (error.stack) {
 			console.error(error.stack);
 		}
-		process.exit(1);
+		process.exit(2);
 	}
 }
 
