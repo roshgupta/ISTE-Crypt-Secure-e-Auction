@@ -240,6 +240,14 @@ func (c *BidDetailsController) Get() {
 
 func (c *BidDetailsController) Post() {
 	models.EndBid(int64(auctions_id))
+	app := "node"
+	arg0 := "auction/auction-simple/application-javascript/endAuction.js"
+	arg1 := "org1"
+	arg2 := "seller" + strconv.Itoa(seller_user_id)
+	arg3 := "auction" + strconv.Itoa(auctions_id*1000)
+	cmd := exec.Command(app, arg0, arg1, arg2, arg3)
+	stdout, err := cmd.Output()
+	fmt.Println(string(stdout), err)
 	c.Redirect("/seller", 302)
 }
 
