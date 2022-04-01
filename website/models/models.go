@@ -34,8 +34,15 @@ type BidderList struct {
 	Amount     int64
 }
 
+type BidHash struct {
+	Id         int64 `json:"-"`
+	Auction_id int64
+	Bidder_id  int64
+	Hash       string
+}
+
 func init() {
-	orm.RegisterModel(new(Bidder), new(Seller), new(Auction), new(BidderList))
+	orm.RegisterModel(new(Bidder), new(Seller), new(Auction), new(BidderList), new(BidHash))
 }
 
 func NewAuction(name, description string, seller_id int64, completed bool) (id int64, err error) {
@@ -125,6 +132,22 @@ func AuctionListBidder() (auction []*Auction, err error) {
 	}
 }
 
+func BidHashList(auction_id int64) (bidHash []*BidHash, err error) {
+	o := orm.NewOrm()
+	var bidHashs []*BidHash
+	u := o.QueryTable("bid_hash")
+	num, e := u.Filter("Auction_id", auction_id).All(&bidHashs)
+	fmt.Println(num)
+	if e == orm.ErrNoRows {
+		return nil, errors.New("user not found")
+	} else if e == nil {
+		return bidHashs, nil
+	} else {
+		return nil, errors.New("unknown error occurred")
+	}
+
+}
+
 func AuctionDetails(id int) (auction *Auction, err error) {
 	o := orm.NewOrm()
 	u := Auction{Id: int64(id)}
@@ -161,6 +184,20 @@ func NewSeller(email, password string) (id int64, err error) {
 	uId, insertErr := o.Insert(&user)
 	if insertErr != nil {
 		return -1, errors.New("failed to insert user to database")
+	}
+
+	return uId, nil
+}
+
+func StoreBidderHash(auction, bidder int64, hash string) (id int64, err error) {
+	o := orm.NewOrm()
+	u := BidHash{}
+	u.Auction_id = auction
+	u.Bidder_id = bidder
+	u.Hash = hash
+	uId, insertErr := o.Insert(&u)
+	if insertErr != nil {
+		return -1, errors.New("failed to insert hash to database")
 	}
 
 	return uId, nil

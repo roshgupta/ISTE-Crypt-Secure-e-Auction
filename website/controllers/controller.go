@@ -2,10 +2,10 @@ package controllers
 
 import (
 	"Secure-e-Auc/models"
-	"bytes"
 	"fmt"
 	"os/exec"
 	"strconv"
+	"strings"
 
 	"github.com/astaxie/beego"
 )
@@ -170,7 +170,7 @@ func (c *NewAuctionController) Post() {
 	arg1 := "org1"
 	s := strconv.Itoa(seller_user_id)
 	arg2 := "seller" + s
-	s = strconv.FormatInt(auctions.Id*1000, 10)
+	s = strconv.FormatInt(auctions.Id, 10)
 	arg3 := "auction" + s
 	arg4 := string(user_product)
 	fmt.Println(app, arg0, arg1, arg2, arg3, arg4)
@@ -241,12 +241,32 @@ func (c *BidDetailsController) Get() {
 func (c *BidDetailsController) Post() {
 	models.EndBid(int64(auctions_id))
 	app := "node"
-	arg0 := "auction/auction-simple/application-javascript/endAuction.js"
+	arg0 := "auction/auction-simple/application-javascript/closeAuction.js"
 	arg1 := "org1"
 	arg2 := "seller" + strconv.Itoa(seller_user_id)
-	arg3 := "auction" + strconv.Itoa(auctions_id*1000)
+	arg3 := "auction" + strconv.Itoa(auctions_id)
 	cmd := exec.Command(app, arg0, arg1, arg2, arg3)
 	stdout, err := cmd.Output()
+	fmt.Println(string(stdout), err)
+	bidHash, err := models.BidHashList(int64(auctions_id))
+	arg0 = "auction/auction-simple/application-javascript/revealBid.js"
+	arg1 = "org2"
+	arg3 = "auction" + strconv.Itoa(auctions_id)
+	for i := 0; i < len(bidHash); i++ {
+		bidder_id := bidHash[i].Bidder_id
+		arg2 = "bidder" + strconv.FormatInt(bidder_id, 10)
+		arg4 := bidHash[i].Hash
+		cmd := exec.Command(app, arg0, arg1, arg2, arg3, arg4)
+		stdout, err := cmd.Output()
+		fmt.Println(string(stdout), err)
+	}
+	app = "node"
+	arg0 = "auction/auction-simple/application-javascript/endAuction.js"
+	arg1 = "org1"
+	arg2 = "seller" + strconv.Itoa(seller_user_id)
+	arg3 = "auction" + strconv.Itoa(auctions_id)
+	cmd = exec.Command(app, arg0, arg1, arg2, arg3)
+	stdout, err = cmd.Output()
 	fmt.Println(string(stdout), err)
 	c.Redirect("/seller", 302)
 }
@@ -280,25 +300,62 @@ func (c *BidController) Get() {
 	c.TplName = "bid.tpl"
 }
 
+// func exportBidId(app string, auctions_id, bid_id string) (toprint string, err error) {
+// 	fmt.Println(app, auctions_id+"_BID_ID="+bid_id)
+
+// 	cmd := exec.Command(app, auctions_id+"_BID_ID="+bid_id)
+// 	stdout, err := cmd.Output()
+// 	arg0 := "$" + auctions_id + "_BID_ID"
+// 	cmd = exec.Command("echo", arg0)
+// 	stdout, err = cmd.Output()
+// 	return string(stdout), err
+// }
+
+func addBid(app, arg0, arg1, arg2, arg3, arg4 string) (toprint string, err error) {
+	fmt.Println(app, arg0, arg1, arg2, arg3, arg4)
+	cmd := exec.Command(app, arg0, arg1, arg2, arg3, arg4)
+	stdout, err := cmd.Output()
+	return string(stdout), err
+}
+
+func proposeBid(app, arg0, arg1, arg2, arg3, arg4 string) (toprint string, err error) {
+	fmt.Println(app, arg0, arg1, arg2, arg3, arg4)
+	cmd := exec.Command(app, arg0, arg1, arg2, arg3, arg4)
+	stdout, err := cmd.Output()
+	return string(stdout), err
+}
+
 func (c *BidController) Post() {
 	amount, err := c.GetInt("bidAmount")
 	fmt.Print(err)
 	fmt.Print(amount)
+
 	bidId, err := models.AddBid(int64(auctions_id), int64(bidder_user_id), int64(amount))
-	fmt.Println(bidId)
+	fmt.Println(bidId, "/n")
 	app := "node"
 	arg0 := "auction/auction-simple/application-javascript/bid_web.js"
 	arg1 := "org2"
 	arg2 := "bidder" + strconv.Itoa(bidder_user_id)
-	arg3 := "auction" + strconv.Itoa(auctions_id*1000)
+	arg3 := "auction" + strconv.Itoa(auctions_id)
 	arg4 := strconv.Itoa(amount)
-	cmd := exec.Command(app, arg0, arg1, arg2, arg3, arg4)
-	stdout, err := cmd.Output()
+	fmt.Println(app, arg0, arg1, arg2, arg3, arg4)
+	toprint, err := proposeBid(app, arg0, arg1, arg2, arg3, arg4)
+	bidHash := strings.Split(toprint, "\n")
+	bidHash = bidHash[:len(bidHash)-1]
+	fmt.Println(toprint)
+	fmt.Println(bidHash)
+	fmt.Println(err)
+
+	id, err := models.StoreBidderHash(int64(auctions_id), int64(bidder_user_id), bidHash[0])
+	print(err)
+	app = "node"
 	arg0 = "auction/auction-simple/application-javascript/submitBid.js"
-	arg4 = bytes.NewBuffer(stdout).String()
-	command := exec.Command(app, arg0, arg1, arg2, arg3, arg4)
-	stdout, err = command.Output()
-	fmt.Println(string(stdout))
-	// fmt.Println(err)
+	arg1 = "org2"
+	arg2 = "bidder" + strconv.Itoa(bidder_user_id)
+	arg3 = "auction" + strconv.Itoa(auctions_id)
+	arg4 = bidHash[0]
+	toprint, err = addBid(app, arg0, arg1, arg2, arg3, arg4)
+	print(err)
+	print(toprint, id)
 	c.Redirect("/bidder", 302)
 }

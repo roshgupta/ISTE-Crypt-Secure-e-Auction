@@ -46,23 +46,20 @@ async function submitBid(ccp,wallet,user,auctionID,bidID) {
 		} else {
 			statefulTxn.setEndorsingOrganizations(auctionJSON.organizations[0]);
 		}
-
 		console.log('\n--> Submit Transaction: add bid to the auction');
-		console.log(bidID)
 
 		await statefulTxn.submit(auctionID,bidID);
-		console.log('still safe idk how')
+		
 		console.log('\n--> Evaluate Transaction: query the auction to see that our bid was added');
 		let result = await contract.evaluateTransaction('QueryAuction',auctionID);
 		console.log('*** Result: Auction: ' + prettyJSONString(result.toString()));
 
 		gateway.disconnect();
 	} catch (error) {
-		console.error(`******** FAILED to submit bid: ${error}`);
-		// process.exit(3);
+		console.log(`******** FAILED to submit bid: ${error}`);
+		process.exit(3);
 	}
 }
-
 async function main() {
 	try {
 
