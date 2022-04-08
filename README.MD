@@ -21,7 +21,6 @@ The Project was done entirely in <b>golang</b> and its various libraries<br>
 <li>npm install
 <li>node enrollAdmin.js org1
 <li>node enrollAdmin.js org2
-<\ul>
 
 ### To get the Website Running
 <ul>
@@ -29,7 +28,6 @@ The Project was done entirely in <b>golang</b> and its various libraries<br>
 <li>Open Terminal
 <li>go mod tidy
 <li>go run main.go
-<\ul>
   
 ### To end the Hyperleadger Fabric Blockchain
 <ul>
@@ -41,4 +39,3 @@ The Project was done entirely in <b>golang</b> and its various libraries<br>
 <li>cd ..
 <li>cd test-network
 <li>./network.sh down
-<\ul>
