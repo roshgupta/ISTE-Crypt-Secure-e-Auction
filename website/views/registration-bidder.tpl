@@ -12,8 +12,11 @@
 <body>
   <main class="main-container">
     <img src="static/img/element.png" alt="" class="side-image left">
-    <aside class="sidebar-image-container">
+    <aside class="sidebar-image-container-register">
     </aside>
+    <a href="/" class="back-button-a">
+      <img class="back-button" src="static/img/back.png" alt="back">
+    </a>
     <section class="container-box">
       <div class="container">
         <h1>Registration for Bidder</h1>

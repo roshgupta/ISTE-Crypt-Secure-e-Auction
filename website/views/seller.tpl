@@ -16,17 +16,20 @@
 
 <body>
     <div class="nav">
-        <div class="brand">
+        <a href="/" class="brand">
             <img src="../static/assets/block.png" alt="" class="bugimg">
             <h1 class="navBrand">Secure e-Auction</h1>
-        </div>
+        </a>
         <!-- <div class="profile">
             <img src="./assets/user.svg" alt="" class="userimg">
             <h3>User</h3>
         </div> -->
         <div class="userProfile">
             <i class="fas fa-user-circle user-pro"></i>
-            <i class="fas fa-power-off power"></i>
+            <a href="/">
+
+                <i class="fas fa-power-off power"></i>
+            </a>
         </div>
     </div>
     <br>
@@ -34,15 +37,16 @@
     <div class="addBtn">
         <div class="buttons">
             <a href="/new-auction" class="addItem">Add New Product</a>
-          </div>  
-    <h2 class="bidHead"><i class="fas fa-hand-holding-usd"></i> Your items </h2>
-    <div class="Product1">
-        <span class="productTitle">Product 1</span>
-        <span class="productDesc">  </span>
-        <div class="buttonDiv"> <button type="button" class="bidbtn3"><i class="far fa-trash-alt"></i> Remove</button>
         </div>
-    </div>
-
+        <h2 class="bidHead"><i class="fas fa-hand-holding-usd"></i> Your items </h2>
+        {{range .auctions}}
+        <div class="Product1">
+            <span class="productTitle">{{.Name}}</span>
+            <span class="productDesc"> {{.Description}}</span>
+            <input type="submit" value="Details" class="bidbtn" onclick="window.location.href='/bid-details?id={{.Id}}'">
+            </div>
+        </div>
+        {{end}}
 
 </body>
 

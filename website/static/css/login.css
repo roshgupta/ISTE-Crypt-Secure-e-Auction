@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Supermercado+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 html {
   font-size: 100%;
@@ -27,12 +29,27 @@ body {
   overflow: hidden;
   position: relative;
 }
-.sidebar-image-container {
-  background-image: url("/static/img/background-image.jpg");
+.main-container-auction {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar-image-container-login,
+.sidebar-image-container-register {
   background-size: cover;
   background-position-x: 50%;
   border-radius: 10% 10% 10% 10% / 0% 30% 29% 0%;
   filter: blur(2px);
+}
+.sidebar-image-container-login {
+  background-image: url("/static/img/background-image.jpg");
+}
+
+.sidebar-image-container-register {
+  background-image: url("/static/img/bg-register.jpg");
 }
 .side-image {
   position: absolute;
@@ -53,6 +70,13 @@ body {
   width: 100%;
   padding: 32px;
 }
+.container-box-auction {
+  width: 100%;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .container {
   max-width: 400px;
   width: 100%;
@@ -64,7 +88,7 @@ body {
 }
 .container h1 {
   font-size: 36px;
-  font-family: "Supermercado One", cursive;
+  font-family: "Poppins";
   margin-bottom: 16px;
   color: #8b73ff;
 }
@@ -170,7 +194,8 @@ body {
   }
 }
 @media screen and (max-width: 900px) {
-  .sidebar-image-container {
+  .sidebar-image-container-login,
+  .sidebar-image-container-register {
     position: absolute;
     top: 0;
     right: 0;
@@ -206,16 +231,32 @@ body {
   }
 }
 
-.third {
-  background: #2c3e50;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  border-color: blue;
+.add-button {
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  background-color: #8a73ff;
   color: #fff;
-  box-shadow: 0 0 40px 40px blue inset, 0 0 0 0 blue;
-  transition: all 150ms ease-in-out;
-  
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.3s;
 }
-.third:hover {
-  box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
+
+.add-button:hover {
+  background-color: #e1a3ff;
+}
+
+.back-button {
+  height: 48px;
+  width: 48px;
+  object-fit: cover;
+}
+
+.back-button-a {
+  position: absolute;
+  top: 64px;
+  left: 64px;
 }

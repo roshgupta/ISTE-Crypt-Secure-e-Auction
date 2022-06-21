@@ -10,18 +10,16 @@
 </head>
 
 <body>
-  <main class="main-container">
+  <main class="main-container-auction">
     <img src="static/img/element.png" alt="" class="side-image left">
-    <aside class="sidebar-image-container">
-    </aside>
-    <section class="container-box">
+    <section class="container-box-auction">
       <div class="container">
         <h1>Add A Product</h1>
         <form action="" id="seller" method="POST">
           <div class="inputs">
             <div class="input">
               <label for="productTitle">Product Name</label>
-              <input type="text" id="productTitle" name="ProductTitle" placeholder="Provide Name of the product">
+              <input type="text" id="productTitle" name="productTitle" placeholder="Provide Name of the product">
             </div>
             <div class="input">
               <label for="ProductDesc">Product Description</label>
@@ -29,7 +27,8 @@
             </div>
           </div>
           <div class="third">
-            <input type="submit" value="Add" class="button"></div>
+            <input type="submit" value="Add" class="add-button">
+          </div>
         </form>
       </div>
       </div>

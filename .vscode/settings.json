@@ -1,0 +1,7 @@
+{
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "go.buildOnSave": "off",
+    "go.gopath":"/home/thekillingjoke/go",
+    "go.inferGopath": false
+}

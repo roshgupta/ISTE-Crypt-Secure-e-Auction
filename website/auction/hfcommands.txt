@@ -1,0 +1,56 @@
+cd test-network
+./network.sh up createChannel -ca
+./network.sh deployCC -ccn auction -ccp ../auction-simple/chaincode-go/ -ccl go -ccep "OR('Org1MSP.peer','Org2MSP.peer')"
+cd ..
+cd auction-simple/application-javascript
+npm install
+
+
+node enrollAdmin.js org1
+node enrollAdmin.js org2
+node registerEnrollUser.js org1 seller
+node registerEnrollUser.js org2 bidder1
+node registerEnrollUser.js org2 bidder2
+node registerEnrollUser.js org2 bidder3
+node registerEnrollUser.js org2 bidder4
+
+
+node createAuction.js org1 seller CarAuction lewiscar
+
+
+node bid.js org1 bidder1 CarAuction20 800
+export BIDDER1_BID_ID=62b2c9e5ad40d5e92e622ae31f60371f5f05d465d40a49ae4268dd2e6f15e5d2
+node submitBid.js org2 bidder3 CarAuction20 $BIDDER1_BID_ID
+
+node bid.js org1 bidder2 CarAuction 500
+export BIDDER2_BID_ID=
+node submitBid.js org1 bidder2 CarAuction $BIDDER2_BID_ID
+
+node bid.js org2 bidder3 CarAuction 500
+export BIDDER3_BID_ID=
+node submitBid.js org2 bidder3 CarAuction $BIDDER3_BID_ID
+
+node bid.js org2 bidder4 CarAuction20 500
+export BIDDER4_BID_ID=
+node submitBid.js org2 bidder4 CarAuction 4474fd0129935e6a246cde2daf0cb1c7257dab3f956f8e5c0b8c31abb4986ef2
+
+
+
+
+node closeAuction.js org1 seller CarAuction
+node revealBid.js org1 bidder1 CarAuction $BIDDER1_BID_ID
+node revealBid.js org1 bidder2 CarAuction $BIDDER2_BID_ID
+node revealBid.js org2 bidder3 CarAuction $BIDDER3_BID_ID
+node revealBid.js org2 bidder4 CarAuction $BIDDER4_BID_ID
+
+node endAuction org1 seller CarAuction
+
+rm -rf wallet
+cd test-network
+./network.sh down
+
+
+
+
+
+

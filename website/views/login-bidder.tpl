@@ -12,12 +12,16 @@
 <body>
   <main class="main-container">
     <img src="static/img/element.png" alt="" class="side-image left">
-    <aside class="sidebar-image-container">
+
+    <aside class="sidebar-image-container-login">
     </aside>
+    <a href="/" class="back-button-a">
+      <img class="back-button" src="static/img/back.png" alt="back">
+    </a>
     <section class="container-box">
       <div class="container">
         <h1>Login for Bidder</h1>
-        <form  action="" id="bidder-login" method="POST">
+        <form action="" id="bidder-login" method="POST">
           <div class="inputs">
             <div class="input">
               <label for="email">Email</label>
@@ -37,7 +41,7 @@
             </div>
         </form>
       </div>
-      
+
 
 
       </div>

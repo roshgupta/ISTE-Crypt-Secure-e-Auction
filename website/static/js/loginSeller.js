@@ -21,7 +21,7 @@ const handleloginSeller = async () => {
     console.log("Request complete! response:", response);
 
   } else {
-    console.error("Enter Valid Input");
+    alert("Enter Valid Input");
   }
 
 }

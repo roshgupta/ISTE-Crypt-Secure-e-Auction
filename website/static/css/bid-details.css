@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Supermercado+One&display=swap");
+
+html {
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding: 64px;
+}
+.side-image {
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  object-fit: cover;
+  z-index: 10;
+}
+.side-image.left {
+  bottom: -25%;
+  left: -10%;
+}
+.side-image.right {
+  top: -25%;
+  right: -10%;
+}
+.container-box {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  height: 90%;
+  width: 90%;
+  padding: 32px;
+  overflow-y: scroll;
+  z-index: 1000;
+}
+.bid-details-heading {
+  text-align: center;
+  font-size: 40px;
+  font-family: "poppins";
+  margin-bottom: 16px;
+  color: #8b73ff;
+}
+.bidder-names-heading {
+  font-size: 32px;
+  /* margin-bottom: 8px; */
+  color: #8b73ff;
+  font-family: "poppins";
+}
+.bid-description {
+  font-size: 20px;
+  text-align: justify;
+}
+.bidder-name {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+.end-auction {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.end-auction button {
+  border: none;
+  outline: none;
+  padding: 1.2rem;
+  background-color: #8a73ff;
+  color: #fff;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+.end-auction button:hover {
+  background-color: #e1a3ff;
+}
+/* .bidder-name p:nth-child(2),
+.bidder-name h2:nth-child(2) {
+  margin-right: 32px;
+} */
+.bidder-name p {
+  font-size: 24px;
+}
+.bidder-names {
+  padding: 32px 0px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+/* Media Query */
+@media screen and (max-width: 1200px) {
+  .side-image.left {
+    bottom: -30%;
+    left: -20%;
+  }
+  .side-image.right {
+    top: -30%;
+    right: -20%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .side-image.left {
+    bottom: -35%;
+    left: -30%;
+  }
+  .side-image.right {
+    top: -35%;
+    right: -30%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .side-image.left {
+    bottom: -30%;
+    left: -35%;
+  }
+  .side-image.right {
+    top: -30%;
+    right: -35%;
+  }
+}
+
+.bid-form {
+  padding: 64px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bid-form input {
+  padding: 12px 20px;
+  font-size: 24px;
+  margin: 0px 16px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  outline: #8b73ff;
+}
+.bid-form input[type="submit"] {
+  padding: 12px 48px;
+  font-weight: 700;
+  background-color: #8b73ff;
+  cursor: pointer;
+}
+.bid-form input[type="number"] {
+  background: linear-gradient(
+    90deg,
+    rgba(224, 163, 255, 0.801) 0%,
+    rgba(138, 115, 255, 0.753) 100%
+  );
+}

@@ -16,14 +16,18 @@
 
 <body>
     <div class="nav">
-        <div class="brand">
+        <a href="/" class="brand">
             <img src="../static/assets/block.png" alt="" class="bugimg">
             <h1 class="navBrand">Secure e-Auction</h1>
-        </div>
-       
+        </a>
+
         <div class="userProfile">
             <i class="fas fa-user-circle user-pro"></i>
-            <i class="fas fa-power-off power"></i>
+            <a href="/" id="logout">
+                
+                <i class="fas fa-power-off power"></i>
+            </a>
+
         </div>
     </div>
     <br>
@@ -33,10 +37,11 @@
     <div class="Product1">
         <span class="productTitle">{{.Name}}</span>
         <span class="productDesc">{{.Description}}</span>
-        <div class="buttonDiv"> <button type="button" class="bidbtn"> Bid here </button>
-        </div>
+        <input type="submit" value="Bid" class="bidbtn" onclick="window.location.href='/bid?id={{.Id}}'">
+    </div>
     </div>
     {{end}}
+
 
 </body>
 
